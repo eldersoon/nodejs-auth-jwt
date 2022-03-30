@@ -4,33 +4,36 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from "typeorm";
+} from 'typeorm'
 
-@Entity("users")
+@Entity('users')
 class User {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string
 
   @Column()
-  nome: string;
+  nome: string
 
   @Column()
-  cpf: string;
+  cpf: string
 
   @Column()
-  email: string;
+  email: string
 
   @Column()
-  senha: string;
+  senha: string
 
   @Column()
-  telefone: string;
+  telefone: string
 
   @CreateDateColumn()
-  created_at: Date;
+  created_at: Date
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updated_at: Date
+
+  @Column()
+  active: boolean
 }
 
-export { User };
+export { User }
