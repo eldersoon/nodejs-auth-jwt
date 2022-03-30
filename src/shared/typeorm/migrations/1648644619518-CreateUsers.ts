@@ -48,6 +48,11 @@ export class CreateUsers1648644619518 implements MigrationInterface {
             type: 'timestamp with time zone',
             default: 'now()',
           },
+          {
+            name: 'active',
+            type: 'smallint',
+            default: 1,
+          },
         ],
       })
     )
