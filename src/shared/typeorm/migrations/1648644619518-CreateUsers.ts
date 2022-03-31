@@ -15,7 +15,7 @@ export class CreateUsers1648644619518 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'nome',
+            name: 'name',
             type: 'varchar',
           },
           {
@@ -30,11 +30,11 @@ export class CreateUsers1648644619518 implements MigrationInterface {
             isUnique: true,
           },
           {
-            name: 'senha',
+            name: 'password',
             type: 'varchar',
           },
           {
-            name: 'telefone',
+            name: 'phone',
             type: 'varchar',
             isNullable: true,
           },

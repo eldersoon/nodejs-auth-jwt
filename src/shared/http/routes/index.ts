@@ -1,11 +1,16 @@
-import { request, response, Router } from "express";
+import { request, response, Router } from 'express'
 
-const routes = Router();
+import userRoutes from 'src/modules/users/routes'
+import authRoutes from 'src/modules/auth/routes'
 
-routes.get("/", (request, response) => {
-  return response.json({
-    message: "tudo ok",
-  });
-});
+const routes = Router()
 
-export default routes;
+export default [
+  routes.get('/', (request, response) => {
+    return response.json({
+      message: 'tudo ok',
+    })
+  }),
+  ...authRoutes,
+  ...userRoutes,
+]
