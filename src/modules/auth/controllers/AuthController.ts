@@ -21,8 +21,16 @@ class AuthController {
 
       const user = await repository.create({ name, email, password })
       await repository.save(user)
+      delete user.password
 
-      return response.json(user)
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEYWORD, {
+        expiresIn: '1d',
+      })
+
+      return response.json({
+        user,
+        token,
+      })
     } catch (err) {
       return response.json(err)
     }
