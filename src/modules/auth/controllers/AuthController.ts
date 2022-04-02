@@ -23,13 +23,26 @@ class AuthController {
       await repository.save(user)
       delete user.password
 
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEYWORD, {
-        expiresIn: '1d',
-      })
+      const accessToken = jwt.sign(
+        { id: user.id },
+        process.env.JWT_SECRET_TOKEN,
+        {
+          expiresIn: '1d',
+        }
+      )
+
+      const refreshToken = jwt.sign(
+        { id: user.id },
+        process.env.JWT_SECRET_REFRESH_TOKEN,
+        {
+          expiresIn: '1d',
+        }
+      )
 
       return response.json({
         user,
-        token,
+        accessToken,
+        refreshToken,
       })
     } catch (err) {
       return response.json(err)
@@ -61,13 +74,26 @@ class AuthController {
         })
       }
 
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEYWORD, {
-        expiresIn: '1d',
-      })
+      const accessToken = jwt.sign(
+        { id: user.id },
+        process.env.JWT_SECRET_TOKEN,
+        {
+          expiresIn: '1d',
+        }
+      )
+
+      const refreshToken = jwt.sign(
+        { id: user.id },
+        process.env.JWT_SECRET_REFRESH_TOKEN,
+        {
+          expiresIn: '1d',
+        }
+      )
 
       return response.json({
         user,
-        token,
+        accessToken,
+        refreshToken,
       })
     } catch (err) {
       return response.json(err)

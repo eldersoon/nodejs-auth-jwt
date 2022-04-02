@@ -12,16 +12,15 @@ export default function AuthMiddleware(
   response: Response,
   next: NextFunction
 ) {
-  const { authorization } = request.headers
-
-  if (!authorization) {
-    return response.status(401).json({
-      message: 'Requisição não autorizada.',
-    })
-  }
-
   try {
-    const token = authorization.replace('Bearer', '').trim()
+    const { authorization } = request.headers
+
+    if (!authorization) {
+      return response.status(401).json({
+        message: 'Requisição não autorizada.',
+      })
+    }
+
     next()
   } catch (err) {
     return response.json(err)
