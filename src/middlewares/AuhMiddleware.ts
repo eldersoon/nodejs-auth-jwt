@@ -15,13 +15,20 @@ export default function AuthMiddleware(
   try {
     const { authorization } = request.headers
 
-    if (!authorization) {
+    if (authorization) {
+      const full_authorization = authorization.split(' ')
+      const token = full_authorization[1]
+      jwt.verify(token, process.env.JWT_SECRET_TOKEN, (err, decoded) => {
+        if (err) {
+          return response.status(401).json({ message: 'Token inválido' })
+        }
+        next()
+      })
+    } else {
       return response.status(401).json({
         message: 'Requisição não autorizada.',
       })
     }
-
-    next()
   } catch (err) {
     return response.json(err)
   }
