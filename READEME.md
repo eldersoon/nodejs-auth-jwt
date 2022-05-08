@@ -14,5 +14,5 @@
 - Auth: POST `/login` dody { email: string, password: string }
 
 #### users
-- Return all users: GET `/users` body { name: string, email: string, password: string } , heraders { Authorization: Bearer <token> }
-- Register new user: POST `/users/store` body {} , heraders { Authorization: Bearer <token> }
+- Return all users: GET `/users` body {} , heraders { Authorization: Bearer <token> }
+- Register new user: POST `/users/store` body { name: string, email: string, password: string } , heraders { Authorization: Bearer <token> }
