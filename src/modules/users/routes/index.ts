@@ -6,7 +6,7 @@ const routes = Router()
 
 const userRoutes = [
   routes.get('/users', AuthMiddleware, UserController.index),
-  routes.post('/user/store', UserController.store),
+  routes.post('/user/store', AuthMiddleware, UserController.store),
 ]
 
 export default userRoutes
